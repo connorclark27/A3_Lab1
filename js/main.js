@@ -5,7 +5,20 @@
    const httpRequest = new XMLHttpRequest();
 
    function changeText() {
+
+        const url = './includes/functions.php?carModel=' +this.id;
+
+        //the fetch API uses new JavaScript Promise API
+        fetch(url) //do an AJAX call with fetch
+          .then((resp) => resp.json()) //convert to json
+          .then((data) => { processResult(data);}) //call the process function
+          .catch(function(error) {
+            console.log(error);
+          })
+
+
         //make an AJAX call to the database; handle errors first
+        /*
         if (!httpRequest) {
           alert('giving up... your browser sucks');
           return false;
@@ -14,10 +27,12 @@
         httpRequest.onreadystatechange = processRequest;
         httpRequest.open('GET', './includes/functions.php?carModel=' + this.id);
         httpRequest.send();
+        */
      }
 
 
-  function processRequest() {
+
+  /*function processRequest() {
     let reqIndicator = document.querySelector('.request-state');
     reqIndicator.textContent = httpRequest.readyState;
 
@@ -31,7 +46,7 @@
         alert('There was a problem with the request.');
       }
     }
-  }
+  }*/
 
    function processResult(data) {
      const { modelName, pricing, modelDetails } = data;
