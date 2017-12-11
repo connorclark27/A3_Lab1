@@ -20,10 +20,10 @@
   function processRequest() {
     let reqIndicator = document.querySelector('.request-state');
     reqIndicator.textContent = httpRequest.readyState;
-    debugger;
+
     if (httpRequest.readyState === XMLHttpRequest.DONE) {
       if (httpRequest.status === 200) { // 200 means everything is awesome
-        debugger;
+
         let data = JSON.parse(httpRequest.responseText);
 
         processResult(data);
